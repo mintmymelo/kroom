@@ -10,47 +10,60 @@ import UIKit
 import Eureka
 
 class RoomListViewController: FormViewController {
-
+    
     var date = Date()
+    var time = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Room List"
+        
+        let rooms = ["Room 1 : Capacity 12-15", "Room 5 : Capacity 12-15", "Room 6 : Capacity 12-15"]
         
         form
             +++ Section()
             +++ Section()
             
             +++ Section("Date & Time")
-//            <<< DateRow() {
-//                $0.value =
+            <<< LabelRow() {
+                $0.title = "Date"
+                $0.value = "March 1, 2017"
+            }
+            <<< LabelRow() {
+                $0.title = "Time"
+                $0.value = "9:00 AM - 10:00 AM"
+            }
+        
+        
+        
+//        +++ SelectableSection<ImageCheckRow<String>>() { section in
+//            section.header = HeaderFooterView(title: "Floo")
+//        }
+//        
+//        for option in rooms {
+//            form.last! <<< ImageCheckRow<String>(option){ lrow in
+//                lrow.title = option
+//                lrow.selectableValue = option
+//                lrow.value = nil
+//            }
 //        }
         
-        
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func dateToString(date: Date, toStringFormat str: String) -> String {
+        switch str {
+        case "time":
+            print("do sth")
+        default:
+            print("do sth")
+        }
+        
+        
+        return ""
     }
-    */
-//    final class CustomDateTimeCell: Row<DateTimeHeaderTableViewCell>, RowType {
-//        required public init(tag: String?) {
-//            super.init(tag: tag)
-//            cellProvider = CellProvider<DateTimeHeaderTableViewCell>(nibName: "DateTimeHeaderTableViewCell")
-//            
-//            
-//        }
-//    }
 }

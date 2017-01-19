@@ -14,11 +14,6 @@ class BookFormViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let h = view.frame.height
-        let hh = self.view.bounds.height
-        print(h)
-        print(hh)
-        
         form
             +++ Section(header: "Select Time", footer: "*Duration must be at least 3 hours")
             <<< TimeInlineRow(){

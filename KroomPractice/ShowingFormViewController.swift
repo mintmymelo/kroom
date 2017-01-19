@@ -13,11 +13,6 @@ class ShowingFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let h = self.view.frame.height
-        let hh = self.view.bounds.height
-        print(h)
-        print(hh)
         
         form
             +++ Section("Select Floor")
@@ -30,7 +25,7 @@ class ShowingFormViewController: FormViewController {
                 $0.value = $0.options.first
             }
             
-            +++ Section("Select Room =====")
+            +++ Section("Select Room")
             <<< PickerInlineRow<Int>("Room Picker Input Row"){
                 $0.title = "Room"
                 $0.options = []
