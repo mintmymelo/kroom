@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		832E62851E30C200007598F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E62841E30C200007598F8 /* Extensions.swift */; };
 		832E62871E30CF6F007598F8 /* ShowRoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E62861E30CF6F007598F8 /* ShowRoomDetailsViewController.swift */; };
+		832E628B1E3155BF007598F8 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E628A1E3155BF007598F8 /* TimelineCell.swift */; };
 		8360AE831E2DDBA700CDF90F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360AE821E2DDBA700CDF90F /* AppDelegate.swift */; };
 		8360AE881E2DDBA700CDF90F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8360AE861E2DDBA700CDF90F /* Main.storyboard */; };
 		8360AE8B1E2DDBA700CDF90F /* KroomPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8360AE891E2DDBA700CDF90F /* KroomPractice.xcdatamodeld */; };
 		8360AE901E2DDBA700CDF90F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8360AE8E1E2DDBA700CDF90F /* LaunchScreen.storyboard */; };
-		83E9F2351E2F6A61001065BC /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F2331E2F6A61001065BC /* CalendarTableViewCell.swift */; };
-		83E9F2361E2F6A61001065BC /* CalendarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83E9F2341E2F6A61001065BC /* CalendarTableViewCell.xib */; };
 		83E9F2391E2F7395001065BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83E9F2381E2F7395001065BC /* Assets.xcassets */; };
 		83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F23B1E2F7804001065BC /* LoginViewController.swift */; };
 		83E9F23E1E2F7817001065BC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F23D1E2F7817001065BC /* MenuViewController.swift */; };
@@ -40,14 +39,13 @@
 		7F94EDF24597279CB96CF1FA /* Pods-KroomPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KroomPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KroomPractice/Pods-KroomPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		832E62841E30C200007598F8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		832E62861E30CF6F007598F8 /* ShowRoomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRoomDetailsViewController.swift; sourceTree = "<group>"; };
+		832E628A1E3155BF007598F8 /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		8360AE7F1E2DDBA700CDF90F /* KroomPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KroomPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8360AE821E2DDBA700CDF90F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8360AE871E2DDBA700CDF90F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8360AE8A1E2DDBA700CDF90F /* KroomPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KroomPractice.xcdatamodel; sourceTree = "<group>"; };
 		8360AE8F1E2DDBA700CDF90F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8360AE911E2DDBA700CDF90F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83E9F2331E2F6A61001065BC /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
-		83E9F2341E2F6A61001065BC /* CalendarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarTableViewCell.xib; sourceTree = "<group>"; };
 		83E9F2381E2F7395001065BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = KroomPractice/Assets.xcassets; sourceTree = "<group>"; };
 		83E9F23B1E2F7804001065BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83E9F23D1E2F7817001065BC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +95,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8302926D1E317ADE00D92E37 /* Cancel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cancel;
+			sourceTree = "<group>";
+		};
 		8360AE761E2DDBA700CDF90F = {
 			isa = PBXGroup;
 			children = (
@@ -137,8 +142,7 @@
 		83E9F2371E2F6D2D001065BC /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				83E9F2331E2F6A61001065BC /* CalendarTableViewCell.swift */,
-				83E9F2341E2F6A61001065BC /* CalendarTableViewCell.xib */,
+				832E628A1E3155BF007598F8 /* TimelineCell.swift */,
 			);
 			name = CustomCell;
 			sourceTree = "<group>";
@@ -152,6 +156,7 @@
 				83E9F24D1E2FA2EA001065BC /* AdminViewController.swift */,
 				83E9F2451E2F9F0C001065BC /* Book */,
 				83E9F2461E2F9F30001065BC /* Show */,
+				8302926D1E317ADE00D92E37 /* Cancel */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -171,28 +176,28 @@
 			children = (
 				F2A565921E30B6E1009D1073 /* ShowingViewController.swift */,
 				F2A565911E30B6E1009D1073 /* ShowingFormViewController.swift */,
-				832E62861E30CF6F007598F8 /* ShowRoomDetailsViewController.swift */,
 				83E9F2431E2F9A29001065BC /* ShowRoomTimelineViewController.swift */,
-				83E9F2471E2F9F46001065BC /* Cancel */,
-				83E9F2481E2F9F4E001065BC /* Add */,
+				832E62861E30CF6F007598F8 /* ShowRoomDetailsViewController.swift */,
+				83E9F2481E2F9F4E001065BC /* Add After Show */,
+				83E9F2471E2F9F46001065BC /* Cancel After Show */,
 			);
 			name = Show;
 			sourceTree = "<group>";
 		};
-		83E9F2471E2F9F46001065BC /* Cancel */ = {
+		83E9F2471E2F9F46001065BC /* Cancel After Show */ = {
 			isa = PBXGroup;
 			children = (
 				83E9F2491E2F9F78001065BC /* CancelViewController.swift */,
 			);
-			name = Cancel;
+			name = "Cancel After Show";
 			sourceTree = "<group>";
 		};
-		83E9F2481E2F9F4E001065BC /* Add */ = {
+		83E9F2481E2F9F4E001065BC /* Add After Show */ = {
 			isa = PBXGroup;
 			children = (
 				83E9F24B1E2F9F87001065BC /* AddViewController.swift */,
 			);
-			name = Add;
+			name = "Add After Show";
 			sourceTree = "<group>";
 		};
 		F2A5658A1E30A804009D1073 /* Model */ = {
@@ -270,7 +275,6 @@
 				8360AE901E2DDBA700CDF90F /* LaunchScreen.storyboard in Resources */,
 				8360AE881E2DDBA700CDF90F /* Main.storyboard in Resources */,
 				83E9F2391E2F7395001065BC /* Assets.xcassets in Resources */,
-				83E9F2361E2F6A61001065BC /* CalendarTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,12 +348,12 @@
 				8360AE8B1E2DDBA700CDF90F /* KroomPractice.xcdatamodeld in Sources */,
 				8360AE831E2DDBA700CDF90F /* AppDelegate.swift in Sources */,
 				F2A565941E30B6E1009D1073 /* ShowingViewController.swift in Sources */,
+				832E628B1E3155BF007598F8 /* TimelineCell.swift in Sources */,
 				F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */,
 				832E62851E30C200007598F8 /* Extensions.swift in Sources */,
 				F2A565931E30B6E1009D1073 /* ShowingFormViewController.swift in Sources */,
 				83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */,
 				F212E8C21E309C2C00438B7E /* BookingViewController.swift in Sources */,
-				83E9F2351E2F6A61001065BC /* CalendarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

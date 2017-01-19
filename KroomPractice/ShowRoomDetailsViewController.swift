@@ -13,10 +13,10 @@ class ShowRoomDetailsViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.isUserInteractionEnabled = false
+        
         form
-            +++ Section()
-            
             +++ Section()
             <<< LabelRow() {
                 $0.title = "Date"
@@ -45,6 +45,7 @@ class ShowRoomDetailsViewController: FormViewController {
                 $0.value = "NO"
             }
         
+            +++ Section("Timeline")
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +53,6 @@ class ShowRoomDetailsViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

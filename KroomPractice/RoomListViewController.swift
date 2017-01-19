@@ -18,8 +18,6 @@ class RoomListViewController: FormViewController {
         super.viewDidLoad()
         self.title = "Room List"
         
-        let rooms = ["Room 1 : Capacity 12-15", "Room 5 : Capacity 12-15", "Room 6 : Capacity 12-15"]
-        
         form
             +++ Section()
             +++ Section()
@@ -36,18 +34,16 @@ class RoomListViewController: FormViewController {
         
         
         
-//        +++ SelectableSection<ImageCheckRow<String>>() { section in
-//            section.header = HeaderFooterView(title: "Floo")
-//        }
-//        
-//        for option in rooms {
-//            form.last! <<< ImageCheckRow<String>(option){ lrow in
-//                lrow.title = option
-//                lrow.selectableValue = option
-//                lrow.value = nil
-//            }
-//        }
+        +++ SelectableSection<ListCheckRow<String>>("Floor 9", selectionType: .singleSelection(enableDeselection: true))
         
+        let rooms = ["Room 1 : Capacity 12-15", "Room 5 : Capacity 12-15", "Room 6 : Capacity 12-15"]
+        for option in rooms {
+            form.last! <<< ListCheckRow<String>(option){ listRow in
+                listRow.title = option
+                listRow.selectableValue = option
+                listRow.value = nil
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
