@@ -39,24 +39,29 @@ class LoginViewController: UIViewController {
     @IBAction func btnLoginTapped(_ sender: Any) {
         let username = usernameTF.text!
         let password = passwordTF.text!
-        NetworkManager.shared.logUserIn(username: username, password: password, completionHandler: {
-            (success, message, error) in
-            guard success else {
-                if error != nil {
-                    self.showErrorAlert(message: (error?.localizedDescription)!)
-                } else {
-                    self.showErrorAlert(message: message)
+        if username == "" || password == "" {
+            showAlert(message: "Please enter username and password")
+        } else {
+            NetworkManager.shared.logUserIn(username: username, password: password, completionHandler: {
+                (success, message, error) in
+                guard success else {
+                    if error != nil {
+                        self.showAlert(message: (error?.localizedDescription)!)
+                    } else {
+                        self.showAlert(message: message)
+                    }
+                    return
                 }
-                return
-            }
-            UserDefaults.standard.set(message, forKey: "_token")
-            self.performSegue(withIdentifier: "SEGUE_LOGIN", sender: sender)
-        })
+                UserDefaults.standard.set(message, forKey: "_token")
+                self.performSegue(withIdentifier: "SEGUE_LOGIN", sender: sender)
+            })
+
+        }
     }
     
-    private func showErrorAlert(message: String) {
-        let errorAlert = UIAlertView(title: "Alert", message: message, delegate: self, cancelButtonTitle: "OK")
-        errorAlert.show()
+    private func showAlert(message: String) {
+        let alert = UIAlertView(title: "Alert", message: message, delegate: self, cancelButtonTitle: "OK")
+        alert.show()
     }
     
     /*

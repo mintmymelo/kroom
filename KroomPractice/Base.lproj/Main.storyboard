@@ -132,10 +132,12 @@
                                     <segue destination="uBR-ck-J4c" kind="push" id="IH1-5g-YAA"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9o-L4-v4f">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9o-L4-v4f">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Bcp-Xy-rIJ"/>
+                                </constraints>
                                 <items>
                                     <navigationItem id="1E6-ht-vhQ">
                                         <nil key="title"/>
@@ -171,6 +173,11 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.89672881000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W9o-L4-v4f" firstAttribute="leading" secondItem="f0Z-VS-Qae" secondAttribute="leading" id="Ih0-Bu-nbG"/>
+                            <constraint firstAttribute="trailing" secondItem="W9o-L4-v4f" secondAttribute="trailing" id="dk2-rv-pnp"/>
+                            <constraint firstItem="zmm-fv-yBm" firstAttribute="top" secondItem="W9o-L4-v4f" secondAttribute="bottom" id="vFI-2V-Acb"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Main Menu" id="xko-E3-itv">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="bbo-6J-UvZ">

@@ -26,21 +26,21 @@ class MenuViewController: UIViewController {
             (success, message, error) in
             guard success else {
                 if error != nil {
-                    self.showErrorAlert(message: (error?.localizedDescription)!)
+                    self.showAlert(message: (error?.localizedDescription)!)
                 } else {
-                    self.showErrorAlert(message: message)
+                    self.showAlert(message: message)
                 }
                 return
             }
             UserDefaults.standard.set(message, forKey: "_token")
-            self.showErrorAlert(message: "Logout Successfully")
+            self.showAlert(message: "Logout Successfully")
             self.performSegue(withIdentifier: "SEGUE_LOGOUT", sender: sender)
         })
     }
     
-    private func showErrorAlert(message: String) {
-        let errorAlert = UIAlertView(title: "Alert", message: message, delegate: self, cancelButtonTitle: "OK")
-        errorAlert.show()
+    private func showAlert(message: String) {
+        let alert = UIAlertView(title: "Alert", message: message, delegate: self, cancelButtonTitle: "OK")
+        alert.show()
     }
 
     /*
