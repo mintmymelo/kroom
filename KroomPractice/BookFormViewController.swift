@@ -1,24 +1,26 @@
 //
-//  BookViewController.swift
+//  BookFormViewController.swift
 //  KroomPractice
 //
-//  Created by Penpitcha Natisupalak on 1/18/2560 BE.
+//  Created by Penpitcha Natisupalak on 1/19/2560 BE.
 //  Copyright © 2560 Penpitcha Natisupalak. All rights reserved.
 //
 
 import UIKit
 import Eureka
 
-class BookViewController: FormViewController {
+class BookFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(red: 239, green: 239, blue: 244, alpha: 1)
+        
+        //let h = view.frame.height
+        //print(h)
 
         form
-            +++ Section("Select Date")
-            <<< CustomRow()
-            
-            +++ Section("Select Time")
+            +++ Section(header: "Select Time", footer: "*Duration must be at least 3 hours")
             <<< TimeInlineRow(){
                 $0.title = "Start"
                 $0.value = Date()
@@ -38,17 +40,17 @@ class BookViewController: FormViewController {
                 $0.title = "Number of participants"
                 $0.value = Int()
             }
-            <<< CheckRow() {
+            <<< SwitchRow() {
                 $0.title = "Projector"
-                $0.value = true
+                $0.value = false
             }
-            <<< CheckRow() {
+            <<< SwitchRow() {
                 $0.title = "Video Conference"
-                $0.value = true
+                $0.value = false
             }
-            <<< CheckRow() {
+            <<< SwitchRow() {
                 $0.title = "White Board"
-                $0.value = true
+                $0.value = false
             }
             
             +++ Section("Room User Information")
@@ -81,18 +83,15 @@ class BookViewController: FormViewController {
                 .onCellSelection { cell, row in
                     row.section?.form?.validate()
                     let roomListVC = self.storyboard?.instantiateViewController(withIdentifier: "RoomListViewController")
+                    //roomListVC.date =
                     self.navigationController?.pushViewController(roomListVC!, animated: true)
         }
 
     }
 
-    // The custom Row also has the cell: CustomCell and its correspond value
-    public final class CustomRow: Row<CalendarTableViewCell>, RowType {
-        required public init(tag: String?) {
-            super.init(tag: tag)
-            // We set the cellProvider to load the .xib corresponding to our cell
-            cellProvider = CellProvider<CalendarTableViewCell>(nibName: "CalendarTableViewCell")
-        }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
@@ -105,4 +104,5 @@ class BookViewController: FormViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 }

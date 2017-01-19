@@ -8,18 +8,37 @@
 
 import UIKit
 import Eureka
+import FSCalendar
 
-class CalendarTableViewCell: Cell<Bool>, CellType {
+public class CalendarTableViewCell: Cell<Bool>, CellType {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet fileprivate weak var calendar: FSCalendar!
+    
+    //fileprivate var nowComponents: NSDateComponents!
+    fileprivate var dateCurrent = Date()
+    
+    public override func setup() {
+        super.setup()
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.locale = Locale(identifier: "th-TH")
+        //calendar.delegate?.calendar!(calendar, didSelect: Date(), at: .notFound)
     }
 
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    func getDate() -> Date {
+        return dateCurrent
+    }
+}
+
+// MARK: - FSCalendarDataSource
+extension CalendarTableViewCell: FSCalendarDataSource {
+}
+
+// MARK: - FSCalendarDelegate
+extension CalendarTableViewCell: FSCalendarDelegate {
     
+    @nonobjc func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.dateCurrent = date
+        print(date)
+    }
 }

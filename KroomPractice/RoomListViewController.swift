@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import Eureka
 
-class RoomListViewController: UIViewController {
+class RoomListViewController: FormViewController {
 
+    var date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Room List"
         
-        // Do any additional setup after loading the view.
+        form
+            +++ Section()
+            +++ Section()
+            
+            +++ Section("Date & Time")
+//            <<< DateRow() {
+//                $0.value =
+//        }
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,5 +45,12 @@ class RoomListViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+//    final class CustomDateTimeCell: Row<DateTimeHeaderTableViewCell>, RowType {
+//        required public init(tag: String?) {
+//            super.init(tag: tag)
+//            cellProvider = CellProvider<DateTimeHeaderTableViewCell>(nibName: "DateTimeHeaderTableViewCell")
+//            
+//            
+//        }
+//    }
 }
