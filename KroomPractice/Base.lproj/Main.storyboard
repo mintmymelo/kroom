@@ -121,7 +121,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icon_book_3"/>
                                 <connections>
-                                    <segue destination="TjO-4G-6vy" kind="push" id="djO-V6-g6f"/>
+                                    <segue destination="ged-JH-9Gf" kind="push" id="Ku7-Sk-ERi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-Ld-bDL">
@@ -282,6 +282,83 @@
             </objects>
             <point key="canvasLocation" x="3804" y="425.03748125937034"/>
         </scene>
+        <!--Booking View Controller-->
+        <scene sceneID="8cK-Wh-3Mq">
+            <objects>
+                <viewController id="ged-JH-9Gf" customClass="BookingViewController" customModule="KroomPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hrr-ph-NPU"/>
+                        <viewControllerLayoutGuide type="bottom" id="gY5-kH-HDM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rd0-X3-RNR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-mE-PDp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDh-fG-hT2">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1230"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFn-76-XWB" customClass="FSCalendar">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="230" id="QGs-t2-2z4"/>
+                                                </constraints>
+                                            </view>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ep-oM-vth">
+                                                <rect key="frame" x="0.0" y="230" width="375" height="1000"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1000" id="CrW-nE-RVu"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="1La-JP-Wnq" kind="embed" id="KXT-9H-AdG"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="AFn-76-XWB" firstAttribute="top" secondItem="qDh-fG-hT2" secondAttribute="top" id="6wH-xV-4Ng"/>
+                                            <constraint firstItem="0Ep-oM-vth" firstAttribute="leading" secondItem="qDh-fG-hT2" secondAttribute="leading" id="9w1-dI-ocF"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Ep-oM-vth" secondAttribute="trailing" id="CIW-pf-IHL"/>
+                                            <constraint firstItem="AFn-76-XWB" firstAttribute="leading" secondItem="qDh-fG-hT2" secondAttribute="leading" id="GwU-9s-16q"/>
+                                            <constraint firstAttribute="bottom" secondItem="0Ep-oM-vth" secondAttribute="bottom" id="HXh-0x-aHf"/>
+                                            <constraint firstItem="0Ep-oM-vth" firstAttribute="top" secondItem="AFn-76-XWB" secondAttribute="bottom" id="VN2-Ul-pWf"/>
+                                            <constraint firstAttribute="trailing" secondItem="AFn-76-XWB" secondAttribute="trailing" id="gWL-17-74e"/>
+                                            <constraint firstItem="AFn-76-XWB" firstAttribute="centerX" secondItem="qDh-fG-hT2" secondAttribute="centerX" id="qQB-NF-bLx"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Fac-AV-4Qe"/>
+                                    <constraint firstItem="qDh-fG-hT2" firstAttribute="leading" secondItem="wdh-mE-PDp" secondAttribute="leading" id="HBQ-bd-5FK"/>
+                                    <constraint firstAttribute="bottom" secondItem="qDh-fG-hT2" secondAttribute="bottom" id="LqJ-g0-D9n"/>
+                                    <constraint firstAttribute="trailing" secondItem="qDh-fG-hT2" secondAttribute="trailing" id="l0C-QV-YdB"/>
+                                    <constraint firstItem="qDh-fG-hT2" firstAttribute="top" secondItem="wdh-mE-PDp" secondAttribute="top" id="qth-5O-XLX"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qDh-fG-hT2" firstAttribute="width" secondItem="Rd0-X3-RNR" secondAttribute="width" id="Bfs-vs-vkR"/>
+                            <constraint firstItem="wdh-mE-PDp" firstAttribute="top" secondItem="Rd0-X3-RNR" secondAttribute="top" id="ejM-Rh-gis"/>
+                            <constraint firstItem="wdh-mE-PDp" firstAttribute="leading" secondItem="Rd0-X3-RNR" secondAttribute="leading" id="m1I-kQ-1yT"/>
+                            <constraint firstItem="gY5-kH-HDM" firstAttribute="top" secondItem="wdh-mE-PDp" secondAttribute="bottom" id="ujp-Kw-kqT"/>
+                            <constraint firstAttribute="trailing" secondItem="wdh-mE-PDp" secondAttribute="trailing" id="wvp-24-F7m"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sln-hE-A3U"/>
+                    <connections>
+                        <outlet property="containerHeight" destination="CrW-nE-RVu" id="ljX-2P-0ei"/>
+                        <outlet property="innerView" destination="qDh-fG-hT2" id="B8P-Ud-Fok"/>
+                        <outlet property="scrollView" destination="wdh-mE-PDp" id="Gah-tR-bl7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nBK-d0-Ny9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1369" y="1003"/>
+        </scene>
         <!--Cancel View Controller-->
         <scene sceneID="5La-PY-nrI">
             <objects>
@@ -316,27 +393,6 @@
             </objects>
             <point key="canvasLocation" x="3804" y="-273.01349325337333"/>
         </scene>
-        <!--Book-->
-        <scene sceneID="OUH-4w-I06">
-            <objects>
-                <viewController id="TjO-4G-6vy" customClass="BookViewController" customModule="KroomPractice" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AHc-pZ-vyr"/>
-                        <viewControllerLayoutGuide type="bottom" id="pmh-7V-rQY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Uy7-sH-qXI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Book" id="Onq-qC-0dG">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="rm9-M3-bCa"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c7i-Ln-4JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1479" y="1062"/>
-        </scene>
         <!--Room List View Controller-->
         <scene sceneID="6fq-RB-gJZ">
             <objects>
@@ -370,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6o-rR-534" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2217" y="1062"/>
+            <point key="canvasLocation" x="2783" y="1003"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yFl-Pn-Obn">
@@ -395,6 +451,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOg-QI-yzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="553" y="205"/>
+        </scene>
+        <!--Book Form View Controller-->
+        <scene sceneID="z0S-Lq-GS0">
+            <objects>
+                <viewController id="1La-JP-Wnq" customClass="BookFormViewController" customModule="KroomPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zkh-uJ-7HD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVY-hT-ARk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2074" y="1357"/>
         </scene>
     </scenes>
     <resources>

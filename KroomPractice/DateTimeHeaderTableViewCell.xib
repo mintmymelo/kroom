@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="102" id="KGk-i7-Jjw" customClass="DateTimeHeaderTableViewCell" customModule="KroomPractice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 March 2560" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pe-tg-bud">
+                        <rect key="frame" x="28" y="19" width="319" height="33"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="33" id="8bB-9v-zfm"/>
+                            <constraint firstAttribute="width" constant="319" id="p5I-Uf-ph4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM - 10:00 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdM-q5-CcF">
+                        <rect key="frame" x="28" y="52" width="319" height="33"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="33" id="DVd-h2-Hpz"/>
+                            <constraint firstAttribute="width" constant="319" id="N5c-cj-0Wk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="RdM-q5-CcF" secondAttribute="bottom" constant="8.5" id="AFg-zl-QYH"/>
+                    <constraint firstItem="8pe-tg-bud" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="Key-1k-k7C"/>
+                    <constraint firstItem="RdM-q5-CcF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Kf9-L0-Idc"/>
+                    <constraint firstItem="8pe-tg-bud" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="a6V-zb-jEc"/>
+                    <constraint firstItem="RdM-q5-CcF" firstAttribute="top" secondItem="8pe-tg-bud" secondAttribute="bottom" id="xvB-2o-aek"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="date" destination="8pe-tg-bud" id="oqL-3q-Tf9"/>
+                <outlet property="time" destination="RdM-q5-CcF" id="0MN-Pb-fnB"/>
+            </connections>
+            <point key="canvasLocation" x="84.5" y="83"/>
+        </tableViewCell>
+    </objects>
+</document>

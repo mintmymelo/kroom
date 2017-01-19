@@ -50,6 +50,9 @@
                     <constraint firstAttribute="bottom" secondItem="yGL-gn-Oq3" secondAttribute="bottom" id="uvH-aa-33U"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="calendar" destination="yGL-gn-Oq3" id="Jgh-HR-fST"/>
+            </connections>
             <point key="canvasLocation" x="-10" y="15.5"/>
         </tableViewCell>
     </objects>
