@@ -25,6 +25,7 @@
 		83E9F24E1E2FA2EA001065BC /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F24D1E2FA2EA001065BC /* AdminViewController.swift */; };
 		9555CBBF9B7B9664ABBD50C6 /* Pods_KroomPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4512DB688914FCC2D8F1AA33 /* Pods_KroomPractice.framework */; };
 		F212E8BC1E305F3000438B7E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8BB1E305F3000438B7E /* NetworkManager.swift */; };
+		F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8BD1E3099EC00438B7E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		83E9F24B1E2F9F87001065BC /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		83E9F24D1E2FA2EA001065BC /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		F212E8BB1E305F3000438B7E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F212E8BD1E3099EC00438B7E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F29EEEEC7AE9640ADE847C0E /* Pods-KroomPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KroomPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-KroomPractice/Pods-KroomPractice.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				8360AE891E2DDBA700CDF90F /* KroomPractice.xcdatamodeld */,
 				8360AE911E2DDBA700CDF90F /* Info.plist */,
 				8360AE821E2DDBA700CDF90F /* AppDelegate.swift */,
+				F212E8BD1E3099EC00438B7E /* Constants.swift */,
 				8360AE8E1E2DDBA700CDF90F /* LaunchScreen.storyboard */,
 				8360AE861E2DDBA700CDF90F /* Main.storyboard */,
 				83E9F23A1E2F77BD001065BC /* Controller */,
@@ -308,6 +311,7 @@
 				83E9F2421E2F91B7001065BC /* SearchRoomViewController.swift in Sources */,
 				8360AE8B1E2DDBA700CDF90F /* KroomPractice.xcdatamodeld in Sources */,
 				8360AE831E2DDBA700CDF90F /* AppDelegate.swift in Sources */,
+				F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */,
 				83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */,
 				83E9F2351E2F6A61001065BC /* CalendarTableViewCell.swift in Sources */,
 			);
