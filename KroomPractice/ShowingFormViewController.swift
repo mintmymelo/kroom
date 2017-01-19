@@ -36,7 +36,7 @@ class ShowingFormViewController: FormViewController {
                     self.delegate?.sendFloorBack(floor: row.value!)
                 })
             
-            +++ Section("Select Room =====")
+            +++ Section("Select Room")
             <<< PickerInlineRow<Int>("Room Picker Input Row"){
                 $0.title = "Room"
                 $0.options = []
