@@ -1,0 +1,15 @@
+PODS:
+  - Eureka (2.0.0-beta.1)
+  - FSCalendar (2.6.0)
+
+DEPENDENCIES:
+  - Eureka (~> 2.0.0-beta.1)
+  - FSCalendar
+
+SPEC CHECKSUMS:
+  Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
+  FSCalendar: c00fa5f4c3ec343ee6f7b804ae19322e9898bb84
+
+PODFILE CHECKSUM: 507b76eaf82d36baf4374547eaa001b888458ae1
+
+COCOAPODS: 1.1.1
