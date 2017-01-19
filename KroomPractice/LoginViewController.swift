@@ -52,7 +52,6 @@ class LoginViewController: UIViewController {
                     }
                     return
                 }
-                UserDefaults.standard.set(message, forKey: "_token")
                 self.performSegue(withIdentifier: "SEGUE_LOGIN", sender: sender)
             })
 
