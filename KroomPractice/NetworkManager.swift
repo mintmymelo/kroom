@@ -20,11 +20,26 @@ class NetworkManager {
         return SessionManager(configuration: configuration)
     }()
     
+    func sendAsynchronousRequest(url: String, params: [String: Any], completionHandler: @escaping (_ result: DataResponse<Any>) -> Void) {
+        
+        var mutableParams = params
+        if let token = UserDefaults.standard.string(forKey: "_token") {
+            mutableParams["token"] = token
+        }
+
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        alamofireManager.request(url, method: .post, parameters: mutableParams, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
+                completionHandler(response)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            })
+    }
+    
     func logUserIn(username: String, password: String, completionHandler: @escaping (_ success: Bool, _ msg: String, _ error: Error?) -> ()) {
         var parameters: [String: Any] = [:]
         parameters["name"] = username
         parameters["pass"] = "ywrw43ruw"
-        NetworkManager.shared.alamofireManager.request("http://10.215.101.76:5000/user/login", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
+        
+        sendAsynchronousRequest(url: Kroom.shared.loginURL, params: parameters, completionHandler: { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -37,16 +52,12 @@ class NetworkManager {
             case .failure(let error):
                 completionHandler(false, "", error)
             }
+        
         })
     }
     
     func logUserOut(completionHandler: @escaping (_ success: Bool, _ msg: String, _ error: Error?) -> ()) {
-        
-        var parameters: [String: Any] = [:]
-        if let token = UserDefaults.standard.string(forKey: "_token") {
-            parameters["token"] = token
-        }
-        NetworkManager.shared.alamofireManager.request("http://10.215.101.76:5000/user/logout", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: {response in
+        sendAsynchronousRequest(url: Kroom.shared.logoutURL, params: [:], completionHandler: { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
