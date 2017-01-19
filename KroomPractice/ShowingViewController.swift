@@ -10,10 +10,16 @@ import UIKit
 import FSCalendar
 
 class ShowingViewController: UIViewController {
+    // MARK: - Properties
+    fileprivate var roomFloor: Int = 1
+    fileprivate var roomNumber: Int = 1
+    fileprivate var date: String? = nil
     
+    // MARK: - IBOutlets
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +32,12 @@ class ShowingViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         containerHeight.constant = 389.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let showFormViewController = segue.destination as? ShowingFormViewController {
+            showFormViewController.delegate = self
+        }
     }
 
     /*
@@ -41,11 +53,35 @@ class ShowingViewController: UIViewController {
 }
 
 extension ShowingViewController: FSCalendarDelegate {
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formattedDate = KroomDateFormatter.toString(date: date)
+        self.date = formattedDate
     }
 }
 
 extension ShowingViewController: FSCalendarDataSource {
     
+}
+
+extension ShowingViewController: EurekaDelegate {
+    func sendFloorBack(floor: Int) {
+        roomFloor = floor
+    }
+    
+    func sendRoomNumberBack(number: Int) {
+        roomNumber = number
+    }
+    
+    func onSearchTapped() {
+        NetworkManager.shared.getRoom(floor: roomFloor, roomNumber: roomNumber, date: date, completionHandler: {
+            (success, room, error) in
+            if success {
+                let showRoomTimelineVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowRoomTimelineViewController") as! ShowRoomTimelineViewController
+                showRoomTimelineVC.searchedRoom = room
+                self.navigationController?.pushViewController(showRoomTimelineVC, animated: true)
+            }
+        })
+        
+        
+    }
 }

@@ -9,16 +9,22 @@
 import UIKit
 
 class ShowRoomTimelineViewController: UIViewController {
+    
+    var searchedRoom: Room!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Room Timeline"
+        let a = Date().offset(from: searchedRoom.slots[0].from!, to: searchedRoom.slots[0].to!)
+        print(a)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

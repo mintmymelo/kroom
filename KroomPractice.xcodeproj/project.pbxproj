@@ -17,7 +17,6 @@
 		83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F23B1E2F7804001065BC /* LoginViewController.swift */; };
 		83E9F23E1E2F7817001065BC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F23D1E2F7817001065BC /* MenuViewController.swift */; };
 		83E9F2401E2F7E74001065BC /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F23F1E2F7E74001065BC /* RoomListViewController.swift */; };
-		83E9F2421E2F91B7001065BC /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F2411E2F91B7001065BC /* SearchRoomViewController.swift */; };
 		83E9F2441E2F9A29001065BC /* ShowRoomTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F2431E2F9A29001065BC /* ShowRoomTimelineViewController.swift */; };
 		83E9F24A1E2F9F78001065BC /* CancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F2491E2F9F78001065BC /* CancelViewController.swift */; };
 		83E9F24C1E2F9F87001065BC /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E9F24B1E2F9F87001065BC /* AddViewController.swift */; };
@@ -30,6 +29,9 @@
 		F2A5658C1E30A811009D1073 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658B1E30A811009D1073 /* Room.swift */; };
 		F2A5658E1E30A8E0009D1073 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658D1E30A8E0009D1073 /* Slot.swift */; };
 		F2A565901E30ABAC009D1073 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */; };
+		F2A565931E30B6E1009D1073 /* ShowingFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A565911E30B6E1009D1073 /* ShowingFormViewController.swift */; };
+		F2A565941E30B6E1009D1073 /* ShowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A565921E30B6E1009D1073 /* ShowingViewController.swift */; };
+		F2A565961E30D006009D1073 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A565951E30D006009D1073 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +49,6 @@
 		83E9F23B1E2F7804001065BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		83E9F23D1E2F7817001065BC /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		83E9F23F1E2F7E74001065BC /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
-		83E9F2411E2F91B7001065BC /* SearchRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoomViewController.swift; sourceTree = "<group>"; };
 		83E9F2431E2F9A29001065BC /* ShowRoomTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowRoomTimelineViewController.swift; sourceTree = "<group>"; };
 		83E9F2491E2F9F78001065BC /* CancelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelViewController.swift; sourceTree = "<group>"; };
 		83E9F24B1E2F9F87001065BC /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +61,9 @@
 		F2A5658B1E30A811009D1073 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F2A5658D1E30A8E0009D1073 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
 		F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		F2A565911E30B6E1009D1073 /* ShowingFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingFormViewController.swift; sourceTree = "<group>"; };
+		F2A565921E30B6E1009D1073 /* ShowingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingViewController.swift; sourceTree = "<group>"; };
+		F2A565951E30D006009D1073 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				8360AE891E2DDBA700CDF90F /* KroomPractice.xcdatamodeld */,
 				8360AE911E2DDBA700CDF90F /* Info.plist */,
 				8360AE821E2DDBA700CDF90F /* AppDelegate.swift */,
+				F2A565951E30D006009D1073 /* Extensions.swift */,
 				F212E8BD1E3099EC00438B7E /* Constants.swift */,
 				F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */,
 				8360AE8E1E2DDBA700CDF90F /* LaunchScreen.storyboard */,
@@ -162,7 +167,8 @@
 		83E9F2461E2F9F30001065BC /* Show */ = {
 			isa = PBXGroup;
 			children = (
-				83E9F2411E2F91B7001065BC /* SearchRoomViewController.swift */,
+				F2A565921E30B6E1009D1073 /* ShowingViewController.swift */,
+				F2A565911E30B6E1009D1073 /* ShowingFormViewController.swift */,
 				83E9F2431E2F9A29001065BC /* ShowRoomTimelineViewController.swift */,
 				83E9F2471E2F9F46001065BC /* Cancel */,
 				83E9F2481E2F9F4E001065BC /* Add */,
@@ -331,10 +337,12 @@
 				83E9F24C1E2F9F87001065BC /* AddViewController.swift in Sources */,
 				83E9F2401E2F7E74001065BC /* RoomListViewController.swift in Sources */,
 				83E9F23E1E2F7817001065BC /* MenuViewController.swift in Sources */,
-				83E9F2421E2F91B7001065BC /* SearchRoomViewController.swift in Sources */,
 				8360AE8B1E2DDBA700CDF90F /* KroomPractice.xcdatamodeld in Sources */,
 				8360AE831E2DDBA700CDF90F /* AppDelegate.swift in Sources */,
+				F2A565941E30B6E1009D1073 /* ShowingViewController.swift in Sources */,
 				F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */,
+				F2A565961E30D006009D1073 /* Extensions.swift in Sources */,
+				F2A565931E30B6E1009D1073 /* ShowingFormViewController.swift in Sources */,
 				83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */,
 				F212E8C21E309C2C00438B7E /* BookingViewController.swift in Sources */,
 				83E9F2351E2F6A61001065BC /* CalendarTableViewCell.swift in Sources */,

@@ -9,15 +9,18 @@
 import UIKit
 import Eureka
 
-class ShowingFormViewController: FormViewController {
+protocol EurekaDelegate: class {
+    func sendFloorBack(floor: Int)
+    func sendRoomNumberBack(number: Int)
+    func onSearchTapped()
+}
 
+class ShowingFormViewController: FormViewController {
+    
+    weak var delegate: EurekaDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let h = self.view.frame.height
-        let hh = self.view.bounds.height
-        print(h)
-        print(hh)
         
         form
             +++ Section("Select Floor")
@@ -28,7 +31,10 @@ class ShowingFormViewController: FormViewController {
                     $0.options.append(i)
                 }
                 $0.value = $0.options.first
-            }
+                }.onChange({
+                    row in
+                    self.delegate?.sendFloorBack(floor: row.value!)
+                })
             
             +++ Section("Select Room =====")
             <<< PickerInlineRow<Int>("Room Picker Input Row"){
@@ -38,16 +44,18 @@ class ShowingFormViewController: FormViewController {
                     $0.options.append(i)
                 }
                 $0.value = $0.options.first
-            }
+                }.onChange({
+                    row in
+                    self.delegate?.sendRoomNumberBack(number: row.value!)
+                })
             
             +++ Section()
             <<< ButtonRow() {
                 $0.title = "Search"
                 }
-                .onCellSelection { cell, row in
-                    row.section?.form?.validate()
-                    let showRoomTimelineVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowRoomTimelineViewController")
-                    self.navigationController?.pushViewController(showRoomTimelineVC!, animated: true)
+                .onCellSelection {
+                    cell, row in
+                    self.delegate?.onSearchTapped()
         }
 
     }

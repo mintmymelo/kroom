@@ -8,9 +8,8 @@
 
 import Foundation
 class KroomDateFormatter {
-    static var shared = KroomDateFormatter()
     
-    func toDate(string: String) -> Date? {
+    class func toDate(string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd HHmmss"
         dateFormatter.locale = Locale(identifier: "en-US")
@@ -19,5 +18,15 @@ class KroomDateFormatter {
         } else {
             return nil
         }
+    }
+    
+    class func toString(date: Date?) -> String {
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd HHmmss"
+            dateFormatter.locale = Locale(identifier: "en-US")
+            return dateFormatter.string(from: date)
+        }
+        return ""
     }
 }

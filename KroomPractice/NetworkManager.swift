@@ -35,6 +35,9 @@ class NetworkManager {
                 if json["State"].intValue == 0 {
                     UserDefaults.standard.set(json["Token"].stringValue, forKey: "_token")
                     completionHandler(response)
+                } else {
+                    //TODO: เด้งออกจากแอพ
+                    print(json["Error"].stringValue)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -83,13 +86,16 @@ class NetworkManager {
         })
     }
     
-    func getRoom(floor: Int?, roomNumber: Int?, completionHandler: @escaping (_ success: Bool, _ room: Room?, _ error: Error?) -> ()) {
+    func getRoom(floor: Int?, roomNumber: Int?, date: String?, completionHandler: @escaping (_ success: Bool, _ room: Room?, _ error: Error?) -> ()) {
         var parameters: [String: Any] = [:]
         if let floor = floor {
             parameters["floor"] = floor
         }
         if let roomNumber = roomNumber {
             parameters["number"] = roomNumber
+        }
+        if let date = date {
+            parameters["when"] = date
         }
         
         sendAsynchronousRequest(url: Kroom.shared.roomViewURL, params: parameters, completionHandler: { response in
@@ -107,7 +113,7 @@ class NetworkManager {
                     room.number = r["Number"].intValue
                     room.sizeMax = r["SizeMix"].intValue
                     room.sizeMin = r["SizeMin"].intValue
-                    for s in r["slots"].arrayValue {
+                    for s in r["Slots"].arrayValue {
                         let slot = Slot()
                         slot.user = s["User"].stringValue
                         slot.userEN = s["UserEN"].stringValue
@@ -120,9 +126,9 @@ class NetworkManager {
                         slot.forPhone = s["ForPhone"].stringValue
                         slot.forEmail = s["ForEmail"].stringValue
                         slot.note = s["Note"].stringValue
-                        slot.from = KroomDateFormatter.shared.toDate(string: s["From"].stringValue)
-                        slot.to = KroomDateFormatter.shared.toDate(string: s["To"].stringValue)
-                        slot.when = KroomDateFormatter.shared.toDate(string: s["When"].stringValue)
+                        slot.from = KroomDateFormatter.toDate(string: s["From"].stringValue)
+                        slot.to = KroomDateFormatter.toDate(string: s["To"].stringValue)
+                        slot.when = KroomDateFormatter.toDate(string: s["When"].stringValue)
                         room.slots.append(slot)
                     }
                     room.status = r["Status"].intValue
@@ -137,5 +143,9 @@ class NetworkManager {
             }
 
         })
+    }
+    
+    func cancelRoom() {
+        
     }
 }

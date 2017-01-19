@@ -14,10 +14,6 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NetworkManager.shared.getRoom(floor: 1, roomNumber: 2, completionHandler: {
-            (success, room, error) in
-            print(room?.number)
-        })
     }
 
     override func didReceiveMemoryWarning() {
