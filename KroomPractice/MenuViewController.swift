@@ -21,6 +21,27 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnLogoutTapped(_ sender: Any) {
+        NetworkManager.shared.logUserOut(completionHandler: {
+            (success, message, error) in
+            guard success else {
+                if error != nil {
+                    self.showErrorAlert(message: (error?.localizedDescription)!)
+                } else {
+                    self.showErrorAlert(message: message)
+                }
+                return
+            }
+            UserDefaults.standard.set(message, forKey: "_token")
+            self.showErrorAlert(message: "Logout Successfully")
+            self.performSegue(withIdentifier: "SEGUE_LOGOUT", sender: sender)
+        })
+    }
+    
+    private func showErrorAlert(message: String) {
+        let errorAlert = UIAlertView(title: "Alert", message: message, delegate: self, cancelButtonTitle: "OK")
+        errorAlert.show()
+    }
 
     /*
     // MARK: - Navigation

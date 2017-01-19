@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aeg-wa-yBA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aeg-wa-yBA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="LOG IN"/>
                                 <connections>
-                                    <segue destination="DMU-0t-BKy" kind="show" animates="NO" id="Yg0-Ey-1Z5"/>
+                                    <action selector="btnLoginTapped:" destination="aeg-wa-yBA" eventType="touchUpInside" id="xfv-nX-dNg"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m2D-E1-dUt">
@@ -76,6 +76,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="m2D-E1-dUt" id="aHV-zL-iUE"/>
                         <outlet property="usernameTF" destination="SVc-Is-HXi" id="cVS-oc-TCH"/>
+                        <segue destination="DMU-0t-BKy" kind="show" identifier="SEGUE_LOGIN" id="0Ym-xs-e60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCW-XG-8i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,7 +147,7 @@
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="aeg-wa-yBA" kind="presentation" animates="NO" id="mW5-5J-1f4"/>
+                                                <action selector="btnLogoutTapped:" destination="tuT-7p-tsH" eventType="touchUpInside" id="MFn-Hf-eHm"/>
                                             </connections>
                                         </button>
                                     </navigationItem>
@@ -183,6 +184,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="aeg-wa-yBA" kind="presentation" identifier="SEGUE_LOGOUT" id="f6b-ka-Lu9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPr-gD-k3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -367,7 +371,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DMU-0t-BKy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Lbw-kU-11U"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4ZI-aj-mru">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4ZI-aj-mru">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

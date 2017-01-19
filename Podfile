@@ -9,5 +9,7 @@ target 'KroomPractice' do
 
 pod 'FSCalendar'
 pod 'Eureka', '~> 2.0.0-beta.1'
+pod 'Alamofire'
+pod 'SwiftyJSON'
 
 end
