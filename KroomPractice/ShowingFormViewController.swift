@@ -1,25 +1,25 @@
 //
-//  SearchRoomViewController.swift
+//  ShowingFormViewController.swift
 //  KroomPractice
 //
-//  Created by Penpitcha Natisupalak on 1/18/2560 BE.
+//  Created by Penpitcha Natisupalak on 1/19/2560 BE.
 //  Copyright © 2560 Penpitcha Natisupalak. All rights reserved.
 //
 
 import UIKit
 import Eureka
 
-class SearchRoomViewController: FormViewController {
+class ShowingFormViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("SearchRoomViewController")
+        let h = self.view.frame.height
+        let hh = self.view.bounds.height
+        print(h)
+        print(hh)
         
         form
-            +++ Section("Select Date")
-            <<< CustomRow()
-        
             +++ Section("Select Floor")
             <<< PickerInlineRow<Int>("Floor Picker Input Row"){
                 $0.title = "Floor"
@@ -30,7 +30,7 @@ class SearchRoomViewController: FormViewController {
                 $0.value = $0.options.first
             }
             
-            +++ Section("Select Room")
+            +++ Section("Select Room =====")
             <<< PickerInlineRow<Int>("Room Picker Input Row"){
                 $0.title = "Room"
                 $0.options = []
@@ -39,7 +39,7 @@ class SearchRoomViewController: FormViewController {
                 }
                 $0.value = $0.options.first
             }
-        
+            
             +++ Section()
             <<< ButtonRow() {
                 $0.title = "Search"
@@ -48,7 +48,8 @@ class SearchRoomViewController: FormViewController {
                     row.section?.form?.validate()
                     let showRoomTimelineVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowRoomTimelineViewController")
                     self.navigationController?.pushViewController(showRoomTimelineVC!, animated: true)
-            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,15 +57,7 @@ class SearchRoomViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // The custom Row also has the cell: CustomCell and its correspond value
-    public final class CustomRow: Row<CalendarTableViewCell>, RowType {
-        required public init(tag: String?) {
-            super.init(tag: tag)
-            // We set the cellProvider to load the .xib corresponding to our cell
-            cellProvider = CellProvider<CalendarTableViewCell>(nibName: "CalendarTableViewCell")
-        }
-    }
-    
+
     /*
     // MARK: - Navigation
 
