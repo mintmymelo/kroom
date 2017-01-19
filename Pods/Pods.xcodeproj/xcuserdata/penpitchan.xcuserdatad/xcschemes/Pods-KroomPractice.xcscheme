@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "800348F7396BF2389525C80DA5E257C6"
+               BlueprintIdentifier = "26AD7D3783666F663DEE4F9AE23654B4"
                BuildableName = "Pods_KroomPractice.framework"
                BlueprintName = "Pods-KroomPractice"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "800348F7396BF2389525C80DA5E257C6"
+            BlueprintIdentifier = "26AD7D3783666F663DEE4F9AE23654B4"
             BuildableName = "Pods_KroomPractice.framework"
             BlueprintName = "Pods-KroomPractice"
             ReferencedContainer = "container:Pods.xcodeproj">
