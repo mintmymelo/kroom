@@ -28,6 +28,11 @@
 		9555CBBF9B7B9664ABBD50C6 /* Pods_KroomPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4512DB688914FCC2D8F1AA33 /* Pods_KroomPractice.framework */; };
 		F212E8BC1E305F3000438B7E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8BB1E305F3000438B7E /* NetworkManager.swift */; };
 		F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8BD1E3099EC00438B7E /* Constants.swift */; };
+		F212E8C11E309C2C00438B7E /* BookFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8BF1E309C2C00438B7E /* BookFormViewController.swift */; };
+		F212E8C21E309C2C00438B7E /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F212E8C01E309C2C00438B7E /* BookingViewController.swift */; };
+		F2A5658C1E30A811009D1073 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658B1E30A811009D1073 /* Room.swift */; };
+		F2A5658E1E30A8E0009D1073 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658D1E30A8E0009D1073 /* Slot.swift */; };
+		F2A565901E30ABAC009D1073 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +60,12 @@
 		83E9F24D1E2FA2EA001065BC /* AdminViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		F212E8BB1E305F3000438B7E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F212E8BD1E3099EC00438B7E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F212E8BF1E309C2C00438B7E /* BookFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFormViewController.swift; sourceTree = "<group>"; };
+		F212E8C01E309C2C00438B7E /* BookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
 		F29EEEEC7AE9640ADE847C0E /* Pods-KroomPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KroomPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-KroomPractice/Pods-KroomPractice.release.xcconfig"; sourceTree = "<group>"; };
+		F2A5658B1E30A811009D1073 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		F2A5658D1E30A8E0009D1073 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
+		F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +123,10 @@
 				8360AE911E2DDBA700CDF90F /* Info.plist */,
 				8360AE821E2DDBA700CDF90F /* AppDelegate.swift */,
 				F212E8BD1E3099EC00438B7E /* Constants.swift */,
+				F2A5658F1E30ABAC009D1073 /* DateFormatter.swift */,
 				8360AE8E1E2DDBA700CDF90F /* LaunchScreen.storyboard */,
 				8360AE861E2DDBA700CDF90F /* Main.storyboard */,
+				F2A5658A1E30A804009D1073 /* Model */,
 				83E9F23A1E2F77BD001065BC /* Controller */,
 				83E9F2371E2F6D2D001065BC /* CustomCell */,
 			);
@@ -146,8 +158,13 @@
 		83E9F2451E2F9F0C001065BC /* Book */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				832E627D1E30B64A007598F8 /* BookingViewController.swift */,
 				832E627C1E30B64A007598F8 /* BookFormViewController.swift */,
+=======
+				F212E8C01E309C2C00438B7E /* BookingViewController.swift */,
+				F212E8BF1E309C2C00438B7E /* BookFormViewController.swift */,
+>>>>>>> 06763ccbd1007acda8bdaeb093a3373718200ed5
 				83E9F23F1E2F7E74001065BC /* RoomListViewController.swift */,
 			);
 			name = Book;
@@ -179,6 +196,15 @@
 				83E9F24B1E2F9F87001065BC /* AddViewController.swift */,
 			);
 			name = Add;
+			sourceTree = "<group>";
+		};
+		F2A5658A1E30A804009D1073 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2A5658B1E30A811009D1073 /* Room.swift */,
+				F2A5658D1E30A8E0009D1073 /* Slot.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,11 +332,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2A565901E30ABAC009D1073 /* DateFormatter.swift in Sources */,
+				F2A5658E1E30A8E0009D1073 /* Slot.swift in Sources */,
 				83E9F24E1E2FA2EA001065BC /* AdminViewController.swift in Sources */,
 				83E9F2441E2F9A29001065BC /* ShowRoomTimelineViewController.swift in Sources */,
+				F2A5658C1E30A811009D1073 /* Room.swift in Sources */,
 				F212E8BC1E305F3000438B7E /* NetworkManager.swift in Sources */,
+<<<<<<< HEAD
 				832E627E1E30B64A007598F8 /* BookFormViewController.swift in Sources */,
 				832E62831E30B657007598F8 /* ShowingViewController.swift in Sources */,
+=======
+				F212E8C11E309C2C00438B7E /* BookFormViewController.swift in Sources */,
+>>>>>>> 06763ccbd1007acda8bdaeb093a3373718200ed5
 				83E9F24A1E2F9F78001065BC /* CancelViewController.swift in Sources */,
 				83E9F24C1E2F9F87001065BC /* AddViewController.swift in Sources */,
 				83E9F2401E2F7E74001065BC /* RoomListViewController.swift in Sources */,
@@ -320,7 +353,11 @@
 				F212E8BE1E3099EC00438B7E /* Constants.swift in Sources */,
 				832E62821E30B657007598F8 /* ShowingFormViewController.swift in Sources */,
 				83E9F23C1E2F7804001065BC /* LoginViewController.swift in Sources */,
+<<<<<<< HEAD
 				832E627F1E30B64A007598F8 /* BookingViewController.swift in Sources */,
+=======
+				F212E8C21E309C2C00438B7E /* BookingViewController.swift in Sources */,
+>>>>>>> 06763ccbd1007acda8bdaeb093a3373718200ed5
 				83E9F2351E2F6A61001065BC /* CalendarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
