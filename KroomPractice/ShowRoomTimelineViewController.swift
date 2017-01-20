@@ -21,10 +21,10 @@ class ShowRoomTimelineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Timeline"
+        configureTableView()
         
-        let a = searchedRoom.slots[0].from?.offset(from: searchedRoom.slots[0].to!)
-        print(a)
-        
+//        let a = searchedRoom.slots[0].from?.offset(from: searchedRoom.slots[0].to!)
+//        print(a)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +39,7 @@ class ShowRoomTimelineViewController: UIViewController {
     func configureTableView() {
         timelineTableview.delegate = self
         timelineTableview.dataSource = self
+        timelineTableview.estimatedRowHeight = 44
     }
 
     /*
@@ -56,10 +57,6 @@ class ShowRoomTimelineViewController: UIViewController {
 // MARK: - UITableView
 extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return times[section]
     }
@@ -74,23 +71,19 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell") as! TimelineCell
-        let subject = UILabel()
-        let roomUserName = UILabel()
-        let roomUserPhone = UILabel()
-        let bookerName = UILabel()
-        let bookerPhone = UILabel()
+        
+        //ข้อมูลดึงมาจาก service ที่ เวลา นั้นๆ
+        let subject = String()
+        let roomUserName = String()
+        let roomUserPhone = String()
+        let bookerName = String()
+        let bookerPhone = String()
+        
         if indexPath.section == 2 {
-            cell.descLabel.text = "asbdkfajsbdkfajsdfjgas\najkdkafjhslfga\nasdhfkajhsdfaksdf]\n"
-            
-            subject.text = "this is a subject"
-            roomUserName.text = "Penpitcha N"
-            roomUserPhone.text = "008-xxxx"
-            bookerName.text = "some secretary"
-            bookerPhone.text = "008-yyyy"
-            cell.addSubview(subject)
+            cell.descLabel.text = "Subject: \(subject)\nRoom User: \(roomUserName)\nRoom User Phone: \(roomUserPhone)\nBooker Name: \(bookerName)\nBookerPhone: \(bookerPhone)"
         }
         else {
-            
+            cell.descLabel.text = "Press to book"
         }
         return cell
     }

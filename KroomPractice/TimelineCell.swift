@@ -11,10 +11,11 @@ import UIKit
 class TimelineCell: UITableViewCell {
     
     @IBOutlet weak var descLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
