@@ -13,6 +13,7 @@ class KroomDateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd HHmmss"
         dateFormatter.locale = Locale(identifier: "en-US")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         if let date = dateFormatter.date(from: string) {
             return date
         } else {
@@ -25,6 +26,7 @@ class KroomDateFormatter {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd HHmmss"
             dateFormatter.locale = Locale(identifier: "en-US")
+            dateFormatter.timeZone = TimeZone(identifier: "UTC")
             return dateFormatter.string(from: date)
         }
         return ""
@@ -41,5 +43,16 @@ class KroomDateFormatter {
         } else {
             return nil
         }
+    }
+
+    class func toDayMonthYear(date: Date?) -> String {
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d MMMM yyyy"
+            dateFormatter.locale = Locale(identifier: "en-US")
+            dateFormatter.timeZone = TimeZone(identifier: "UTC")
+            return dateFormatter.string(from: date)
+        }
+        return ""
     }
 }

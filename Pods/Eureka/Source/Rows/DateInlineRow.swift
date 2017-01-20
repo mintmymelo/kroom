@@ -57,6 +57,7 @@ open class _TimeInlineRow: _DateInlineFieldRow {
     
     public required init(tag: String?) {
         super.init(tag: tag)
+        dateFormatter?.timeZone = TimeZone(identifier: "UTC")
         dateFormatter?.timeStyle = .short
         dateFormatter?.dateStyle = .none
     }

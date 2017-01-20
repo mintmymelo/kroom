@@ -15,26 +15,32 @@ class ShowRoomTimelineViewController: UIViewController {
     @IBOutlet weak var timelineHeight: NSLayoutConstraint!
     
     //MARK:- Properties
-    let times = ["08:00","08:30", "09.00", "09.30", "10.00", "10.30", "11.00", "11.30", "12.00", "12.30", "13.00", "13.30", "14.00", "14.30", "15.00", "15.30", "16.00", "16.30", "17.00", "17.30"]
-    let timesDate : [Date] = []
+    let intervals = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"]
+    var intervalsTime : [Date] = []
+    var isReserved = Array(repeating: false, count: 24)
     var searchedRoom: Room!
-
+    var searchedDate: Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Timeline"
+        
+        for interval in intervals {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            
+            let intervalDate = formatter.date(from: interval)
+            if let intervalTime = KroomDateFormatter.toTime(date: intervalDate) {
+                intervalsTime.append(intervalTime)
+            }
+            print(intervalsTime[0])
+        }
+        
         configureTableView()
-
-        //let timeDiff = searchedRoom.slots[0].to?.offset(from: searchedRoom.slots[0].from!)
-        print(searchedRoom.slots[0].timeFrom)
-        let df = DateFormatter()
-        df.dateFormat = "HH:mm"
-        df.timeZone = TimeZone(secondsFromGMT: 0)
         
-        print(df.date(from: times[0]))
-        
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -47,30 +53,34 @@ class ShowRoomTimelineViewController: UIViewController {
     func configureTableView() {
         timelineTableview.delegate = self
         timelineTableview.dataSource = self
+        timelineTableview.isScrollEnabled = false
         timelineTableview.estimatedRowHeight = 44
     }
-
-    /*
-    // MARK: - Navigation
-     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let showRoomDetailsViewController = segue.destination as? ShowRoomDetailsViewController {
+            showRoomDetailsViewController.date = KroomDateFormatter.toDayMonthYear(date: searchedDate)
+            showRoomDetailsViewController.roomNumber = searchedRoom.number
+            showRoomDetailsViewController.roomFloor = searchedRoom.floor
+            showRoomDetailsViewController.capacity = searchedRoom.sizeMax
+            showRoomDetailsViewController.hasProjector = searchedRoom.hasProjector
+            showRoomDetailsViewController.hasVC = searchedRoom.hasVC
+            showRoomDetailsViewController.hasWB = searchedRoom.hasWB
+        }
+     }
+    
 }
 
 // MARK: - UITableView
 extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return times[section]
+        return intervals[section]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 20
+        return intervals.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,30 +89,41 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell") as! TimelineCell
-        
-        //ข้อมูลดึงมาจาก service ที่ เวลา นั้นๆ
-        let subject = String()
-        let roomUserName = String()
-        let roomUserPhone = String()
-        let bookerName = String()
-        let bookerPhone = String()
-        
-        if indexPath.section == 2 {
-            cell.descLabel.text = "Subject: \(subject)\nRoom User: \(roomUserName)\nRoom User Phone: \(roomUserPhone)\nBooker Name: \(bookerName)\nBookerPhone: \(bookerPhone)"
+        for slot in searchedRoom.slots {
+            if slot.timeFrom! == intervalsTime[indexPath.section] {
+                let note = searchedRoom.note
+                let roomUserName = slot.forUserTH
+                let roomUserPhone = slot.forPhone
+                let bookerName = slot.user
+                let bookerPhone = slot.phone
+                
+                cell.descLabel.text = "Subject: \(note)\nRoom User: \(roomUserName)\nRoom User Phone: \(roomUserPhone)\nBooker Name: \(bookerName)\nBookerPhone: \(bookerPhone)"
+                isReserved[indexPath.section] = true
+            }
+            if slot.timeTo! > intervalsTime[indexPath.section] && slot.timeFrom! <= intervalsTime[indexPath.section] {
+                let note = searchedRoom.note
+                let roomUserName = slot.forUserTH
+                let roomUserPhone = slot.forPhone
+                let bookerName = slot.user
+                let bookerPhone = slot.phone
+                
+                cell.descLabel.text = "Subject: \(note)\nRoom User: \(roomUserName)\nRoom User Phone: \(roomUserPhone)\nBooker Name: \(bookerName)\nBookerPhone: \(bookerPhone)"
+                isReserved[indexPath.section] = true
+            }
         }
-        else {
-            cell.descLabel.text = "Press to book"
-        }
+        updateViewConstraints()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //if cell is empty -> push add view controller
-        let addViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
-        self.navigationController?.pushViewController(addViewController, animated: true)
-        
-        //else -> push cancel view controller
+        if isReserved[indexPath.section] {
+            print("reserved")
+        } else {
+            let addViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
+            addViewController.startTime = intervalsTime[indexPath.section]
+            self.navigationController?.pushViewController(addViewController, animated: true)
+        }
         
     }
 }

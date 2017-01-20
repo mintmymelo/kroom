@@ -10,7 +10,8 @@ import UIKit
 import Eureka
 
 class AddViewController: FormViewController {
-
+    var startTime: Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Book"
@@ -21,7 +22,8 @@ class AddViewController: FormViewController {
             +++ Section(header: "Select Time", footer: "*Duration must be at least 3 hours")
             <<< TimeInlineRow(){
                 $0.title = "Start"
-                $0.value = Date()
+                $0.value = startTime
+                
             }
             <<< TimeInlineRow(){
                 $0.title = "End"
