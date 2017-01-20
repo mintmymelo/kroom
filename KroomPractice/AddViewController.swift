@@ -15,6 +15,51 @@ class AddViewController: FormViewController {
         super.viewDidLoad()
         self.title = "Book"
         
+        form
+            +++ Section()
+                
+            +++ Section(header: "Select Time", footer: "*Duration must be at least 3 hours")
+            <<< TimeInlineRow(){
+                $0.title = "Start"
+                $0.value = Date()
+            }
+            <<< TimeInlineRow(){
+                $0.title = "End"
+                $0.value = Date()
+            }
+            
+            +++ Section("Room Information")
+            <<< TextRow(){
+                $0.title = "Meeting Subject"
+                $0.value = String()
+                $0.placeholder = "Type a subject..."
+            }
+        
+            +++ Section("Room User Information")
+            <<< TextRow(){
+                $0.title = "Name"
+                //$0.value = String()
+            }
+            <<< PhoneRow(){
+                $0.title = "Phone Number"
+            }
+                
+            +++ Section("Booker Information")
+            <<< TextRow(){
+                $0.title = "Name"
+                $0.placeholder = "Booker Name"
+            }
+            <<< PhoneRow(){
+                $0.title = "Phone Number"
+                $0.placeholder = "Booker Phone Number"
+            }
+
+            +++ Section()
+            <<< ButtonRow() {
+                $0.title = "Book"
+            }
+        
+
     }
 
     override func didReceiveMemoryWarning() {

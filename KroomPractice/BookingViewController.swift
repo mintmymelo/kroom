@@ -19,12 +19,11 @@ class BookingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //scrollView.backgroundColor = UIColor.lightGray
-        //configureCalendar
+        //configureCalendar()
     }
     
     override func viewDidLayoutSubviews() {
-        containerHeight.constant = 890.0
+        containerHeight.constant = 890.0 + 30.0
     }
 
     override func didReceiveMemoryWarning() {
