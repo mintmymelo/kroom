@@ -20,13 +20,13 @@ class NetworkManager {
         return SessionManager(configuration: configuration)
     }()
     
-    func sendAsynchronousRequest(url: String, params: [String: Any], completionHandler: @escaping (_ result: DataResponse<Any>) -> Void) {
+    func sendAsynchronousRequest(url: String, params: [String: Any], completionHandler: @escaping (_ result: JSON?, _ error: Error?) -> Void) {
         
         var mutableParams = params
         if let token = UserDefaults.standard.string(forKey: "_token") {
             mutableParams["token"] = token
         }
-
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         alamofireManager.request(url, method: .post, parameters: mutableParams, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
             switch response.result {
@@ -34,13 +34,12 @@ class NetworkManager {
                 let json = JSON(value)
                 if json["State"].intValue == 0 {
                     UserDefaults.standard.set(json["Token"].stringValue, forKey: "_token")
-                    completionHandler(response)
+                    completionHandler(json, nil)
                 } else {
                     //TODO: เด้งออกจากแอพ
-                    print(json["Error"].stringValue)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                completionHandler(nil, error)
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
@@ -51,38 +50,35 @@ class NetworkManager {
         parameters["name"] = username
         parameters["pass"] = "ywrw43ruw"
         
-        sendAsynchronousRequest(url: Kroom.shared.loginURL, params: parameters, completionHandler: { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                if json["State"].intValue == 0 {
-                    completionHandler(true, "", nil)
-                } else {
-                    completionHandler(false, json["Error"].stringValue, nil)
-                }
-                
-            case .failure(let error):
+        sendAsynchronousRequest(url: Kroom.shared.loginURL, params: parameters, completionHandler: { (json, error) in
+            
+            guard error == nil else {
                 completionHandler(false, "", error)
+                return
             }
-        
+            guard let json = json else {
+                completionHandler(false, "No data response from server.", nil)
+                return
+            }
+            completionHandler(true, "", nil)
+            
         })
     }
     
     func logUserOut(completionHandler: @escaping (_ success: Bool, _ msg: String, _ error: Error?) -> ()) {
-        sendAsynchronousRequest(url: Kroom.shared.logoutURL, params: [:], completionHandler: { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print(json["State"])
-                if json["State"].intValue == 0 {
-                    completionHandler(true, "", nil)
-                } else {
-                    completionHandler(false, json["Error"].stringValue, nil)
-                }
-                
-            case .failure(let error):
+        sendAsynchronousRequest(url: Kroom.shared.logoutURL, params: [:], completionHandler: {
+            (json, error) in
+            
+            guard error == nil else {
                 completionHandler(false, "", error)
+                return
             }
+            guard let json = json else {
+                completionHandler(false, "No data response from server.", nil)
+                return
+            }
+            completionHandler(true, "", nil)
+            
         })
     }
     
@@ -98,50 +94,53 @@ class NetworkManager {
             parameters["when"] = date
         }
         
-        sendAsynchronousRequest(url: Kroom.shared.roomViewURL, params: parameters, completionHandler: { response in
-
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                let rooms = json["Rooms"].arrayValue
-                for r in rooms {
-                    let room = Room()
-                    room.name = r["Name"].stringValue
-                    room.note = r["Note"].stringValue
-                    room.place = r["Place"].stringValue
-                    room.floor = r["Floor"].intValue
-                    room.number = r["Number"].intValue
-                    room.sizeMax = r["SizeMix"].intValue
-                    room.sizeMin = r["SizeMin"].intValue
-                    for s in r["Slots"].arrayValue {
-                        let slot = Slot()
-                        slot.user = s["User"].stringValue
-                        slot.userEN = s["UserEN"].stringValue
-                        slot.userTH = s["UserTH"].stringValue
-                        slot.phone = s["Phone"].stringValue
-                        slot.email = s["Email"].stringValue
-                        slot.forUser = s["ForUser"].stringValue
-                        slot.forUserEN = s["ForUserEN"].stringValue
-                        slot.forUserTH = s["ForUserTH"].stringValue
-                        slot.forPhone = s["ForPhone"].stringValue
-                        slot.forEmail = s["ForEmail"].stringValue
-                        slot.note = s["Note"].stringValue
-                        slot.from = KroomDateFormatter.toDate(string: s["From"].stringValue)
-                        slot.to = KroomDateFormatter.toDate(string: s["To"].stringValue)
-                        slot.when = KroomDateFormatter.toDate(string: s["When"].stringValue)
-                        room.slots.append(slot)
-                    }
-                    room.status = r["Status"].intValue
-                    room.hasProjector = r["HasProjector"].boolValue
-                    room.hasVC = r["HasVC"].boolValue
-                    room.hasWB = r["HasWB"].boolValue
-                    completionHandler(true, room, nil)
-                }
-                
-            case .failure(let error):
+        sendAsynchronousRequest(url: Kroom.shared.roomViewURL, params: parameters, completionHandler: { (json, error) in
+            
+            guard error == nil else {
                 completionHandler(false, nil, error)
+                return
             }
-
+            
+            guard let json = json else {
+                completionHandler(false, nil, nil)
+                return
+            }
+            
+            let rooms = json["Rooms"].arrayValue
+            for r in rooms {
+                let room = Room()
+                room.name = r["Name"].stringValue
+                room.note = r["Note"].stringValue
+                room.place = r["Place"].stringValue
+                room.floor = r["Floor"].intValue
+                room.number = r["Number"].intValue
+                room.sizeMax = r["SizeMix"].intValue
+                room.sizeMin = r["SizeMin"].intValue
+                for s in r["Slots"].arrayValue {
+                    let slot = Slot()
+                    slot.user = s["User"].stringValue
+                    slot.userEN = s["UserEN"].stringValue
+                    slot.userTH = s["UserTH"].stringValue
+                    slot.phone = s["Phone"].stringValue
+                    slot.email = s["Email"].stringValue
+                    slot.forUser = s["ForUser"].stringValue
+                    slot.forUserEN = s["ForUserEN"].stringValue
+                    slot.forUserTH = s["ForUserTH"].stringValue
+                    slot.forPhone = s["ForPhone"].stringValue
+                    slot.forEmail = s["ForEmail"].stringValue
+                    slot.note = s["Note"].stringValue
+                    slot.from = KroomDateFormatter.toDate(string: s["From"].stringValue)
+                    slot.to = KroomDateFormatter.toDate(string: s["To"].stringValue)
+                    slot.when = KroomDateFormatter.toDate(string: s["When"].stringValue)
+                    room.slots.append(slot)
+                }
+                room.status = r["Status"].intValue
+                room.hasProjector = r["HasProjector"].boolValue
+                room.hasVC = r["HasVC"].boolValue
+                room.hasWB = r["HasWB"].boolValue
+                completionHandler(true, room, nil)
+            }
+            
         })
     }
     
