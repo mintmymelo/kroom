@@ -34,7 +34,6 @@ class ShowRoomTimelineViewController: UIViewController {
             if let intervalTime = KroomDateFormatter.toTime(date: intervalDate) {
                 intervalsTime.append(intervalTime)
             }
-            print(intervalsTime[0])
         }
         
         configureTableView()
@@ -121,7 +120,7 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
             print("reserved")
         } else {
             let addViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
-            addViewController.startTime = intervalsTime[indexPath.section]
+            addViewController.startTime = intervals[indexPath.section]
             self.navigationController?.pushViewController(addViewController, animated: true)
         }
         
