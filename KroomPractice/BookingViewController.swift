@@ -39,7 +39,6 @@ class BookingViewController: UIViewController {
         self.calendar.appearance.titleSelectionColor = UIColor.black
         self.calendar.appearance.selectionColor = UIColor.clear
         //self.calendar.appearance.borderSelectionColor = UIColor.greenKBankColor
-        self.calendar.delegate?.calendarCurrentPageDidChange!(calendar)
         self.calendar.delegate?.calendar!(calendar, didSelect: calendar.today!, at: .current)
         self.calendar.select(calendar.today!, scrollToDate: true)
     }
@@ -59,7 +58,7 @@ class BookingViewController: UIViewController {
 
 extension BookingViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
+        //print(date)
     }
 }
 
