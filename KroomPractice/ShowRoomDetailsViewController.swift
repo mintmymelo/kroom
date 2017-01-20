@@ -10,7 +10,15 @@ import UIKit
 import Eureka
 
 class ShowRoomDetailsViewController: FormViewController {
-
+    // MARK: - Properties
+    var date: String = ""
+    var roomNumber: Int = 0
+    var roomFloor: Int = 0
+    var capacity: Int = 0
+    var hasProjector: Bool = false
+    var hasVC: Bool = false
+    var hasWB: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,29 +28,34 @@ class ShowRoomDetailsViewController: FormViewController {
             +++ Section()
             <<< LabelRow() {
                 $0.title = "Date"
-                $0.value = "March 1, 2017"
+                $0.value = date
             }
             <<< LabelRow() {
-                $0.title = "Time"
-                $0.value = "9:00 AM - 10:00 AM"
+                $0.title = "Floor"
+                $0.value = "\(roomFloor)"
             }
-        
+            
+            <<< LabelRow() {
+                $0.title = "Room"
+                $0.value = "\(roomNumber)"
+            }
+            
             +++ Section("Room Details")
             <<< LabelRow() {
                 $0.title = "Capacity"
-                $0.value = "12"
+                $0.value = "\(capacity)"
             }
             <<< LabelRow() {
                 $0.title = "Projector"
-                $0.value = "YES"
+                $0.value = (hasProjector) ? "Yes":"No"
             }
             <<< LabelRow() {
                 $0.title = "VDO Conf."
-                $0.value = "YES"
+                $0.value = (hasVC) ? "Yes":"No"
             }
             <<< LabelRow() {
                 $0.title = "White Board"
-                $0.value = "NO"
+                $0.value = (hasWB) ? "Yes":"No"
             }
         
             +++ Section("Timeline")

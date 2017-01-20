@@ -23,7 +23,7 @@ class ShowingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.calendar.select(calendar.today)
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +78,7 @@ extension ShowingViewController: EurekaDelegate {
             if success {
                 let showRoomTimelineVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowRoomTimelineViewController") as! ShowRoomTimelineViewController
                 showRoomTimelineVC.searchedRoom = room
+                showRoomTimelineVC.searchedDate = self.calendar.date(byAddingDays: 1, to: self.calendar.selectedDate)
                 self.navigationController?.pushViewController(showRoomTimelineVC, animated: true)
             }
         })
