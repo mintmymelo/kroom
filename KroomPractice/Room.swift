@@ -21,4 +21,5 @@ class Room: NSObject {
     var hasProjector: Bool = false
     var hasVC: Bool = false
     var hasWB: Bool = false
+
 }

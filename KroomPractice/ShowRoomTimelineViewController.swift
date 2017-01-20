@@ -16,14 +16,21 @@ class ShowRoomTimelineViewController: UIViewController {
     
     //MARK:- Properties
     let times = ["08:00","08:30", "09.00", "09.30", "10.00", "10.30", "11.00", "11.30", "12.00", "12.30", "13.00", "13.30", "14.00", "14.30", "15.00", "15.30", "16.00", "16.30", "17.00", "17.30"]
+    let timesDate : [Date] = []
     var searchedRoom: Room!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Timeline"
         
-        let a = searchedRoom.slots[0].from?.offset(from: searchedRoom.slots[0].to!)
-        print(a)
+
+        //let timeDiff = searchedRoom.slots[0].to?.offset(from: searchedRoom.slots[0].from!)
+        print(searchedRoom.slots[0].timeFrom)
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
+        df.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        print(df.date(from: times[0]))
         
     }
 

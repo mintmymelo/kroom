@@ -27,7 +27,7 @@ class ShowingFormViewController: FormViewController {
             <<< PickerInlineRow<Int>("Floor Picker Input Row"){
                 $0.title = "Floor"
                 $0.options = []
-                for i in 1...13{
+                for i in 1...11{
                     $0.options.append(i)
                 }
                 $0.value = $0.options.first

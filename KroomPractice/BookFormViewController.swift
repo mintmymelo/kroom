@@ -15,7 +15,7 @@ class BookFormViewController: FormViewController {
         super.viewDidLoad()
         
         form
-            +++ Section(header: "Select Time", footer: "*Duration must be at least 3 hours")
+            +++ Section(header: "Select Time", footer: "*Duration must be at least 30 minutes")
             <<< TimeInlineRow(){
                 $0.title = "Start"
                 $0.value = Date()

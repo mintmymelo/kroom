@@ -29,4 +29,17 @@ class KroomDateFormatter {
         }
         return ""
     }
+    
+    class func toTime(date: Date?) -> Date? {
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            let timeString = dateFormatter.string(from: date)
+            let timeDate = dateFormatter.date(from: timeString)
+            return timeDate
+        } else {
+            return nil
+        }
+    }
 }
