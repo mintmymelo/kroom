@@ -23,4 +23,12 @@ class Slot: NSObject {
     var from: Date? = nil
     var to: Date? = nil
     var when: Date? = nil
+    lazy var timeFrom: Date? = {
+       [unowned self] in
+        return KroomDateFormatter.toTime(date: self.from)
+    }()
+    lazy var timeTo: Date? = {
+        [unowned self] in
+        return KroomDateFormatter.toTime(date: self.to)
+    }()
 }

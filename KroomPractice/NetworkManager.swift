@@ -144,7 +144,7 @@ class NetworkManager {
         })
     }
     
-    func cancelRoom() {
+    func makeSlot(startTime: Date, endTime: Date, note: String, user: String, roomName: String, forPhone: String) {
         
     }
 }
