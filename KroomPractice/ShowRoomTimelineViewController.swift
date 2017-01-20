@@ -90,7 +90,7 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineCell") as! TimelineCell
         for slot in searchedRoom.slots {
             if slot.timeFrom! == intervalsTime[indexPath.section] {
-                let note = searchedRoom.note
+                let note = slot.note
                 let roomUserName = slot.forUserTH
                 let roomUserPhone = slot.forPhone
                 let bookerName = slot.user
@@ -100,7 +100,7 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
                 isReserved[indexPath.section] = true
             }
             if slot.timeTo! > intervalsTime[indexPath.section] && slot.timeFrom! <= intervalsTime[indexPath.section] {
-                let note = searchedRoom.note
+                let note = slot.note
                 let roomUserName = slot.forUserTH
                 let roomUserPhone = slot.forPhone
                 let bookerName = slot.user
@@ -121,6 +121,8 @@ extension ShowRoomTimelineViewController: UITableViewDelegate, UITableViewDataSo
         } else {
             let addViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
             addViewController.startTime = intervals[indexPath.section]
+            addViewController.searchedDate = searchedDate
+            addViewController.roomName = searchedRoom.name
             self.navigationController?.pushViewController(addViewController, animated: true)
         }
         

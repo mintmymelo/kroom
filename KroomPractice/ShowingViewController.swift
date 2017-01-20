@@ -13,7 +13,7 @@ class ShowingViewController: UIViewController {
     // MARK: - Properties
     fileprivate var roomFloor: Int = 1
     fileprivate var roomNumber: Int = 1
-    fileprivate var date: String? = nil
+    fileprivate var date: String = ""
     
     // MARK: - IBOutlets
     @IBOutlet weak var innerView: UIView!

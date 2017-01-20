@@ -37,6 +37,7 @@ class NetworkManager {
                     completionHandler(json, nil)
                 } else {
                     //TODO: เด้งออกจากแอพ
+                    print(json)
                 }
             case .failure(let error):
                 completionHandler(nil, error)
@@ -82,17 +83,11 @@ class NetworkManager {
         })
     }
     
-    func getRoom(floor: Int?, roomNumber: Int?, date: String?, completionHandler: @escaping (_ success: Bool, _ room: Room?, _ error: Error?) -> ()) {
+    func getRoom(floor: Int, roomNumber: Int, date: String, completionHandler: @escaping (_ success: Bool, _ room: Room?, _ error: Error?) -> ()) {
         var parameters: [String: Any] = [:]
-        if let floor = floor {
-            parameters["floor"] = floor
-        }
-        if let roomNumber = roomNumber {
-            parameters["number"] = roomNumber
-        }
-        if let date = date {
-            parameters["when"] = date
-        }
+        parameters["floor"] = floor
+        parameters["number"] = roomNumber
+        parameters["when"] = date
         
         sendAsynchronousRequest(url: Kroom.shared.roomViewURL, params: parameters, completionHandler: { (json, error) in
             
@@ -144,7 +139,32 @@ class NetworkManager {
         })
     }
     
-    func makeSlot(startTime: Date, endTime: Date, note: String, user: String, roomName: String, forPhone: String) {
+    func makeSlot(from: String, to: String, note: String, user: String, name: String, forPhone: String, forUser: String, completionHandler: @escaping (_ success: Bool, _ message: String, _ error: Error?) -> ()) {
+        var parameters: [String: Any] = [:]
+        parameters["from"] = from
+        parameters["to"] = to
+        parameters["room"] = name
+        parameters["user"] = user
+        parameters["forPhone"] = forPhone
+        parameters["forUser"] = forUser
+        parameters["note"] = note
+        
+        
+        
+        sendAsynchronousRequest(url: Kroom.shared.slotMakeURL, params: parameters, completionHandler: { (json, error) in
+            guard error == nil else {
+                completionHandler(false, "", error)
+                return
+            }
+            
+            guard let json = json else {
+                completionHandler(false, "", nil)
+                return
+            }
+            
+            completionHandler(true, "Booked", nil)
+            
+        })
         
     }
 }

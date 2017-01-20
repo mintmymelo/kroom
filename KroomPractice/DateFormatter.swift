@@ -55,4 +55,15 @@ class KroomDateFormatter {
         }
         return ""
     }
+    
+    class func extractDayMonthYear(date: Date?) -> String {
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyyMMdd"
+            dateFormatter.locale = Locale(identifier: "en-US")
+            dateFormatter.timeZone = TimeZone(identifier: "UTC")
+            return dateFormatter.string(from: date)
+        }
+        return ""
+    }
 }
